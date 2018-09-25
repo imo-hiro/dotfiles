@@ -20,6 +20,17 @@ setopt auto_cd
 # upptercaser or lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+# enable typo correct
+setopt correct
+
+# tmux
+if [[ ! -n $TMUX ]]; then
+  tmux new-session
+fi
+
+# autosuggest accept
+bindkey '^r' autosuggest-accept
+
 # prompt
 PROMPT='%F{green}@%m:%f %F{blue}%~/%f $ '
 
@@ -44,9 +55,13 @@ alias la='ls -la'
 alias ll='ls -l'
 alias l='ls -lCF'
 alias vi='vim'
+alias vz='vim ~/.zshrc'
+alias vv='vim ~/.vimrc'
 alias vs='open -a Visual\ Studio\ Code'
 # git
 alias gs='git status'
 alias gl='git log --graph'
 alias ga='git add .'
 alias gc='git commit -m'
+
+zplug load
