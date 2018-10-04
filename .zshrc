@@ -17,6 +17,9 @@ zstyle ':completion:*:default' menu select=1
 # auto cd (change directory)
 setopt auto_cd
 
+# store directory history
+setopt auto_pushd
+
 # upptercaser or lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
@@ -25,7 +28,17 @@ setopt correct
 
 # tmux
 if [[ ! -n $TMUX ]]; then
-  tmux new-session
+  ID="`tmux list-sessions`"
+  if [[ -z "$ID" ]]; then
+	  tmux new-session
+  fi
+	create_new_session="Create New Session"
+	ID="$ID\n${create_new_session}:"
+	ID="`echo $ID | $PERCOL | cut -d: -f1`"
+	if [[ "$ID" = "${create_new_session}" ]]; then
+	  tmux new-session
+	fi
+    tmux attach-session -t "$ID"
 fi
 
 # autosuggest accept
