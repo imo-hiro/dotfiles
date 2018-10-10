@@ -4,10 +4,13 @@ source ~/.zplug/init.zsh
 # color setting
 autoload -Uz colors
 colors
+zstyle ':completion:*' list-colors ''
+
 
 # compinit
 autoload -Uz compinit
 compinit
+
 
 # compinit selectable
 setopt auto_list
