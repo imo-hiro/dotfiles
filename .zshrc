@@ -1,34 +1,3 @@
-# use zplug
-source ~/.zplug/init.zsh
-
-# color setting
-autoload -Uz colors
-colors
-zstyle ':completion:*' list-colors ''
-
-
-# compinit
-autoload -Uz compinit
-compinit
-
-
-# compinit selectable
-setopt auto_list
-setopt auto_menu
-zstyle ':completion:*:default' menu select=1
-
-# auto cd (change directory)
-setopt auto_cd
-
-# store directory history
-setopt auto_pushd
-
-# upptercaser or lowercase
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-# enable typo correct
-setopt correct
-
 # tmux
 if [[ ! -n $TMUX ]]; then
   ID="`tmux list-sessions`"
@@ -43,6 +12,39 @@ if [[ ! -n $TMUX ]]; then
 	fi
     tmux attach-session -t "$ID"
 fi
+
+# use zplug
+source ~/.zplug/init.zsh
+
+# color setting
+autoload -Uz colors
+colors
+
+# compinit
+#autoload -Uz compinit
+#compinit
+
+# compinit selectable
+setopt auto_list
+setopt auto_menu
+zstyle ':completion:*:default' menu select=1
+
+# ls colors
+export LSCOLORS=gxfxcxdxbxegedabagacag
+export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;46'
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS} 
+
+# auto cd (change directory)
+setopt auto_cd
+
+# store directory history
+setopt auto_pushd
+
+# upptercaser or lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# enable typo correct
+setopt correct
 
 # autosuggest accept
 bindkey '^r' autosuggest-accept
@@ -62,14 +64,15 @@ precmd () { vcs_info }
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
 # plugins
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-completions", lazy:true
+zplug "zsh-users/zsh-autosuggestions", lazy:true
+zplug "zsh-users/zsh-syntax-highlighting", defer:2, lazy:true
 
 # Alias
 alias la='ls -la'
 alias ll='ls -l'
 alias l='ls -lCF'
+alias ls='ls -GF'
 alias vi='vim'
 alias vz='vim ~/.zshrc'
 alias vv='vim ~/.vimrc'
@@ -81,3 +84,7 @@ alias ga='git add .'
 alias gc='git commit -m'
 
 zplug load
+
+if (which zprof > /dev/null 2>&1) ;then
+    zprof
+fi
