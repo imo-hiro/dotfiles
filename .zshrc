@@ -82,6 +82,8 @@ alias gs='git status'
 alias gl='git log --graph'
 alias ga='git add .'
 alias gc='git commit -m'
+alias gp='git pull'
+alias gf='git fetch'
 
 zplug load
 
