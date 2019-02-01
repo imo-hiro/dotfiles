@@ -1,4 +1,3 @@
-
 # lang setting
 export LANG='ja_JP.UTF-8'
 
@@ -14,7 +13,7 @@ eval "$( pyenv init - zsh )"
 alias pyenv='CFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv'
 
 # astah setting
-export ASDK_HOME="/Users/tokinotoki/dev/astah-plugin-SDK-1.4"
+export ASDK_HOME="$HOME/dev/astah-plugin-SDK"
 export PATH="$ASDK_HOME/bin:$PATH"
 
 # jenv
@@ -36,3 +35,6 @@ fi
 
 # maven
 MAVEN_OPTS=-Dmaven.wagon.http.ssl.insecure=true
+
+# zplug
+export ZPLUG_HOME=/usr/local/opt/zplug

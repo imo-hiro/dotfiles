@@ -14,7 +14,7 @@ if [[ ! -n $TMUX ]]; then
 fi
 
 # use zplug
-source ~/.zplug/init.zsh
+source $ZPLUG_HOME/init.zsh
 
 # color setting
 autoload -Uz colors
