@@ -4,15 +4,15 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/Users/tokinotoki/.vim/bundle/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/.vim/bundle/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/Users/tokinotoki/.vim/bundle')
-  call dein#begin('/Users/tokinotoki/.vim/bundle')
+if dein#load_state($HOME . '/.vim/bundle')
+  call dein#begin($HOME . '/.vim/bundle')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/Users/tokinotoki/.vim/bundle/repos/github.com/Shougo/dein.vim')
+  call dein#add($HOME . '/.vim/bundle/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
   call dein#add('Shougo/neosnippet.vim')
