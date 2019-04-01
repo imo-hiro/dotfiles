@@ -17,11 +17,12 @@ export ASDK_HOME="$HOME/dev/astah-plugin-SDK"
 export PATH="$ASDK_HOME/bin:$PATH"
 
 # jenv
-if which jenv > /dev/null; then
-  # JENV_ROOTがemptyの場合、'${HOME}/.jenv'がrootと設定される
-  export JENV_ROOT=/usr/local/var/jenv
-  eval "$( jenv init - zsh )"
+export JENV_ROOT=/usr/local/var/jenv
+if [ -d "${JENV_ROOT}" ]; then
+  export PATH="$JENV_ROOT/bin:$PATH"
+  eval "$(jenv init -)"
 fi
+export JAVA_HOME="$jenv prefix)"
 
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
